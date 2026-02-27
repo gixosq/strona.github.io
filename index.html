@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,217 +16,285 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;          /* ← Płynne przewijanie */
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       background: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.7;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      background: #f8f9fa;
-      padding: 5rem 0 4rem;
-      text-align: center;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 500;
-      color: #0d47a1;
-      margin-bottom: 0.8rem;
-    }
-
-    header .subtitle {
-      font-size: 1.4rem;
-      color: #444;
+      color: #111827;
+      line-height: 1.8;
       font-weight: 400;
     }
 
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nawigacja */
     nav {
-      background: #0d47a1;
-      color: white;
-      padding: 1rem 0;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
     }
 
     nav .container {
       display: flex;
       justify-content: center;
-      gap: 3rem;
-      font-size: 1.1rem;
+      gap: 3.5rem;
+      padding: 1.25rem 0;
     }
 
     nav a {
-      color: white;
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #1d4ed8;                   /* granat akcent */
+    }
+
+    /* Hero / wstęp */
+    header {
+      padding: 14rem 0 10rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+
+    header .title-sub {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #4b5563;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Sekcje */
+    section {
+      padding: 10rem 0;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .about p {
+      font-size: 1.18rem;
+      max-width: 720px;
+      margin: 0 auto 1.8rem;
+      color: #374151;
+      text-align: center;
+    }
+
+    /* Kontakt */
+    #kontakt {
+      background: #f8fafc;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: #1d4ed8;
+    }
+
+    .contact-item a {
+      color: #1d4ed8;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: #bbdefb;
-    }
-
-    section {
-      padding: 5rem 0;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      color: #0d47a1;
-      margin-bottom: 1.8rem;
-      text-align: center;
-    }
-
-    .about {
-      background: #fafafa;
-    }
-
-    .about p {
-      font-size: 1.15rem;
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
-      text-align: center;
-    }
-
-    .contact {
-      background: #0d47a1;
-      color: white;
-      text-align: center;
-    }
-
-    .contact h2 {
-      color: white;
-    }
-
-    .contact-info {
-      font-size: 1.3rem;
-      margin: 2rem 0;
-    }
-
-    .contact a {
-      color: #bbdefb;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .contact a:hover {
+    .contact-item a:hover {
+      color: #1e40af;
       text-decoration: underline;
     }
 
-    .appointment {
-      background: #e3f2fd;
-      padding: 6rem 0;
+    /* Umów konsultację */
+    #umow-sie {
       text-align: center;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
     }
 
-    .appointment .btn {
+    .btn-primary {
       display: inline-block;
-      background: #0d47a1;
+      background: #1d4ed8;
       color: white;
-      padding: 1.2rem 3rem;
-      font-size: 1.3rem;
+      padding: 1.1rem 2.8rem;
+      font-size: 1.25rem;
       font-weight: 500;
       text-decoration: none;
-      border-radius: 6px;
-      margin-top: 2rem;
-      transition: background 0.3s;
+      border-radius: 8px;
+      margin: 2rem 1rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(29,78,216,0.18);
     }
 
-    .appointment .btn:hover {
-      background: #1565c0;
+    .btn-primary:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(29,78,216,0.25);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1d4ed8;
+      border: 2px solid #1d4ed8;
+    }
+
+    .btn-secondary:hover {
+      background: #1d4ed8;
+      color: white;
     }
 
     footer {
-      background: #f8f9fa;
+      background: #111827;
+      color: #9ca3af;
       text-align: center;
-      padding: 2rem 0;
-      color: #555;
+      padding: 4rem 0 2rem;
       font-size: 0.95rem;
-      border-top: 1px solid #e0e0e0;
+    }
+
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
-      header h1 { font-size: 2.2rem; }
-      nav .container { flex-direction: column; gap: 1rem; }
-      h2 { font-size: 1.9rem; }
+      header        { padding: 10rem 0 8rem; }
+      header h1     { font-size: 2.6rem; }
+      nav .container{ gap: 2rem; font-size: 1rem; }
+      section       { padding: 6rem 0; }
+      h2            { font-size: 2.1rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
+  <nav id="navbar">
     <div class="container">
       <a href="#o-mnie">O mnie</a>
       <a href="#kontakt">Kontakt</a>
-      <a href="#umow-sie">Umów się na konsultację</a>
+      <a href="#umow-sie">Umów konsultację</a>
     </div>
   </nav>
 
   <header>
     <div class="container">
       <h1>dr Klaudia Kaniecka</h1>
-      <div class="subtitle">Adwokat, doktor nauk prawnych</div>
+      <p class="title-sub">Adwokat, doktor nauk prawnych</p>
     </div>
   </header>
 
-  <section id="o-mnie" class="about">
+  <section id="o-mnie">
     <div class="container">
       <h2>O mnie</h2>
-      <p>Adwokat wpisany na listę Okręgowej Rady Adwokackiej w Warszawie.</p>
-      <p>Doktor nauk prawnych – absolwentka Wydziału Prawa i Administracji Uniwersytetu Warszawskiego, gdzie obroniła również doktorat.</p>
-      <p>Specjalizacja w prawie podatkowym, prawie spółek, restrukturyzacjach oraz doradztwie dla przedsiębiorców.</p>
-      <p>Wieloletnie doświadczenie w obsłudze podmiotów gospodarczych i klientów indywidualnych.</p>
+      <p>Adwokat wpisana na listę Okręgowej Rady Adwokackiej w Warszawie.</p>
+      <p>Doktor nauk prawnych – absolwentka Wydziału Prawa i Administracji Uniwersytetu Warszawskiego.</p>
+      <p>Specjalizuję się w prawie podatkowym, prawie spółek, restrukturyzacjach oraz kompleksowym doradztwie dla przedsiębiorców i osób prywatnych.</p>
+      <p>Wieloletnie doświadczenie w obsłudze podmiotów gospodarczych oraz klientów indywidualnych.</p>
     </div>
   </section>
 
-  <section id="kontakt" class="contact">
+  <section id="kontakt">
     <div class="container">
       <h2>Kontakt</h2>
-      <div class="contact-info">
-        <p><strong>Adw. dr Klaudia Kaniecka</strong></p>
-        <p>Kancelaria Adwokacka</p>
-        <p>ul. Szekspira 4 lok. 172<br>01-913 Warszawa</p>
-        <p style="margin: 2rem 0;">
-          <strong>Telefon:</strong> <a href="tel:+48123456789">+48 123 456 789</a><br>
-          <strong>E-mail:</strong> <a href="mailto:klaudia.kaniecka@kancelaria.pl">klaudia.kaniecka@kancelaria.pl</a>
-        </p>
-        <p style="font-size: 1.1rem; opacity: 0.9;">
-          Zapraszam do kontaktu – chętnie odpowiem na pytania i umówię termin konsultacji.
-        </p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>Adres</strong>
+          Kancelaria Adwokacka dr Klaudia Kaniecka<br>
+          ul. Szekspira 4 lok. 172<br>
+          01-913 Warszawa
+        </div>
+        <div class="contact-item">
+          <strong>Telefon</strong>
+          <a href="tel:+48123456789">+48 123 456 789</a>
+        </div>
+        <div class="contact-item">
+          <strong>E-mail</strong>
+          <a href="mailto:klaudia.kaniecka@kancelaria.pl">klaudia.kaniecka@kancelaria.pl</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="umow-sie" class="appointment">
+  <section id="umow-sie">
     <div class="container">
       <h2>Umów się na konsultację</h2>
-      <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 2.5rem;">
-        Najwygodniej umówić się telefonicznie lub mailowo.<br>
-        Proszę opisać krótko sprawę – postaram się znaleźć dogodny termin w najbliższym możliwym czasie.
+      <p style="font-size: 1.25rem; max-width: 680px; margin: 0 auto 2.5rem; color: #4b5563;">
+        Najlepiej zadzwonić lub napisać maila – opiszę, jak mogę pomóc i zaproponuję dogodny termin.
       </p>
-      <a href="mailto:klaudia.kaniecka@kancelaria.pl?subject=Zapytanie%20o%20konsultację" class="btn">
-        Napisz do mnie → umów konsultację
-      </a>
-      <p style="margin-top: 2.5rem; font-size: 1.1rem;">
-        lub zadzwoń bezpośrednio: <strong><a href="tel:+48123456789" style="color:#0d47a1;">+48 123 456 789</a></strong>
-      </p>
+      <div>
+        <a href="mailto:klaudia.kaniecka@kancelaria.pl?subject=Zapytanie%20o%20konsultację" class="btn-primary">Napisz do mnie</a>
+        <a href="tel:+48123456789" class="btn-primary btn-secondary">Zadzwoń bezpośrednio</a>
+      </div>
     </div>
   </section>
 
   <footer>
     © 2026 dr Klaudia Kaniecka – Kancelaria Adwokacka<br>
-    NIP: [tu wpisz NIP jeśli chcesz podać] • Wszystkie prawa zastrzeżone
+    <a href="mailto:klaudia.kaniecka@kancelaria.pl">klaudia.kaniecka@kancelaria.pl</a> • NIP: [wpisz NIP]
   </footer>
+
+  <script>
+    // Subtelne podświetlenie nawigacji + efekt scrolled
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      // Opcjonalnie: podświetl aktywną sekcję (można usunąć jeśli niepotrzebne)
+      document.querySelectorAll('section').forEach(sec => {
+        const top = sec.offsetTop - 120;
+        const height = sec.offsetHeight;
+        if (pageYOffset >= top && pageYOffset < top + height) {
+          const id = sec.getAttribute('id');
+          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+          document.querySelector(`nav a[href="#${id}"]`)?.classList.add('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
