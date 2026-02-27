@@ -3,245 +3,238 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>dr Klaudia Kaniecka – Adwokat</title>
+  <title>dr Klaudia Kaniecka – Kancelaria Adwokacka</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;          /* ← Płynne przewijanie */
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Roboto', sans-serif;
-      background: #ffffff;
-      color: #111827;
-      line-height: 1.8;
-      font-weight: 400;
+      background:#fff;
+      color:#333;
+      line-height:1.7;
+    }
+    .container { max-width:1100px; margin:0 auto; padding:0 20px; }
+
+    /* Header / Top bar */
+    header.top-bar {
+      background:#0a2540;
+      color:#fff;
+      padding:1rem 0;
+      font-size:1.1rem;
+    }
+    header.top-bar .container {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .phone { font-weight:500; }
+    .phone a { color:#fff; text-decoration:none; }
+    nav ul {
+      list-style:none;
+      display:flex;
+      gap:2.5rem;
+    }
+    nav a { color:#fff; text-decoration:none; font-weight:500; transition:0.2s; }
+    nav a:hover { color:#a0c4ff; }
+
+    /* Hero */
+    .hero {
+      background:#f8f9fa;
+      padding:8rem 0 6rem;
+      text-align:center;
+    }
+    .hero h1 {
+      font-size:3.8rem;
+      font-weight:700;
+      color:#0a2540;
+      margin-bottom:0.5rem;
+    }
+    .hero .tag {
+      font-size:1.6rem;
+      font-weight:400;
+      color:#555;
+      margin-bottom:3rem;
+    }
+    .hero .subtitle {
+      font-size:1.3rem;
+      max-width:700px;
+      margin:0 auto 2.5rem;
+      color:#444;
     }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* Practice Areas – cards z ikonami */
+    .practice-areas {
+      padding:6rem 0;
+      background:#fff;
+    }
+    .practice-areas h2 {
+      text-align:center;
+      font-size:2.6rem;
+      margin-bottom:4rem;
+      color:#0a2540;
+    }
+    .areas-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+      gap:2.5rem;
+    }
+    .area-card {
+      text-align:center;
+      padding:2.5rem 1.5rem;
+      background:#f8f9fa;
+      border-radius:8px;
+      transition:0.25s;
+    }
+    .area-card:hover { box-shadow:0 10px 25px rgba(0,0,0,0.08); transform:translateY(-5px); }
+    .icon {
+      font-size:3.5rem;
+      color:#0a2540;
+      margin-bottom:1.2rem;
+    }
+    .area-card h3 {
+      font-size:1.6rem;
+      margin-bottom:1rem;
+      color:#0a2540;
+    }
+    .area-card p {
+      color:#555;
+      font-size:1.05rem;
     }
 
-    /* Nawigacja */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e5e7eb;
-      z-index: 1000;
-      transition: all 0.3s ease;
+    /* Consultation CTA */
+    .cta-section {
+      background:#0a2540;
+      color:#fff;
+      text-align:center;
+      padding:7rem 0;
     }
-
-    nav.scrolled {
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    .cta-section h2 {
+      font-size:2.8rem;
+      margin-bottom:1.5rem;
     }
-
-    nav .container {
-      display: flex;
-      justify-content: center;
-      gap: 3.5rem;
-      padding: 1.25rem 0;
+    .cta-section p {
+      font-size:1.3rem;
+      max-width:700px;
+      margin:0 auto 2.5rem;
     }
-
-    nav a {
-      color: #1f2937;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.05rem;
-      transition: color 0.2s ease;
+    .btn {
+      display:inline-block;
+      background:#fff;
+      color:#0a2540;
+      padding:1.2rem 3rem;
+      font-size:1.3rem;
+      font-weight:600;
+      text-decoration:none;
+      border-radius:6px;
+      transition:0.3s;
     }
-
-    nav a:hover,
-    nav a.active {
-      color: #1d4ed8;                   /* granat akcent */
-    }
-
-    /* Hero / wstęp */
-    header {
-      padding: 14rem 0 10rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 1rem;
-    }
-
-    header .title-sub {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #4b5563;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    /* Sekcje */
-    section {
-      padding: 10rem 0;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 2.5rem;
-      text-align: center;
-    }
-
-    .about p {
-      font-size: 1.18rem;
-      max-width: 720px;
-      margin: 0 auto 1.8rem;
-      color: #374151;
-      text-align: center;
+    .btn:hover {
+      background:#e0e0e0;
+      transform:translateY(-3px);
     }
 
     /* Kontakt */
-    #kontakt {
-      background: #f8fafc;
+    .contact {
+      padding:6rem 0;
+      background:#f8f9fa;
+      text-align:center;
     }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3rem;
-      margin-top: 4rem;
+    .contact h2 { font-size:2.4rem; margin-bottom:2.5rem; color:#0a2540; }
+    .contact-info {
+      display:flex;
+      justify-content:center;
+      gap:4rem;
+      flex-wrap:wrap;
+      font-size:1.2rem;
     }
-
-    .contact-item {
-      text-align: center;
-    }
-
-    .contact-item strong {
-      display: block;
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      color: #1d4ed8;
-    }
-
-    .contact-item a {
-      color: #1d4ed8;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .contact-item a:hover {
-      color: #1e40af;
-      text-decoration: underline;
-    }
-
-    /* Umów konsultację */
-    #umow-sie {
-      text-align: center;
-      background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: #1d4ed8;
-      color: white;
-      padding: 1.1rem 2.8rem;
-      font-size: 1.25rem;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 8px;
-      margin: 2rem 1rem;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(29,78,216,0.18);
-    }
-
-    .btn-primary:hover {
-      background: #1e40af;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(29,78,216,0.25);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #1d4ed8;
-      border: 2px solid #1d4ed8;
-    }
-
-    .btn-secondary:hover {
-      background: #1d4ed8;
-      color: white;
-    }
+    .contact-item strong { display:block; color:#0a2540; margin-bottom:0.6rem; }
 
     footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 4rem 0 2rem;
-      font-size: 0.95rem;
+      background:#0a2540;
+      color:#ccc;
+      text-align:center;
+      padding:3rem 0;
+      font-size:0.95rem;
     }
 
-    footer a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      header        { padding: 10rem 0 8rem; }
-      header h1     { font-size: 2.6rem; }
-      nav .container{ gap: 2rem; font-size: 1rem; }
-      section       { padding: 6rem 0; }
-      h2            { font-size: 2.1rem; }
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.8rem; }
+      .hero .tag { font-size:1.3rem; }
+      nav ul { gap:1.5rem; font-size:1rem; flex-wrap:wrap; justify-content:center; }
+      .contact-info { flex-direction:column; gap:2rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav id="navbar">
+  <header class="top-bar">
     <div class="container">
-      <a href="#o-mnie">O mnie</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="#umow-sie">Umów konsultację</a>
-    </div>
-  </nav>
-
-  <header>
-    <div class="container">
-      <h1>dr Klaudia Kaniecka</h1>
-      <p class="title-sub">Adwokat, doktor nauk prawnych</p>
+      <div class="phone"><a href="tel:+48123456789">+48 123 456 789</a></div>
+      <nav>
+        <ul>
+          <li><a href="#specjalizacje">Specjalizacje</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#konsultacja">Umów konsultację</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <section id="o-mnie">
+  <section class="hero">
     <div class="container">
-      <h2>O mnie</h2>
-      <p>Adwokat wpisana na listę Okręgowej Rady Adwokackiej w Warszawie.</p>
-      <p>Doktor nauk prawnych – absolwentka Wydziału Prawa i Administracji Uniwersytetu Warszawskiego.</p>
-      <p>Specjalizuję się w prawie podatkowym, prawie spółek, restrukturyzacjach oraz kompleksowym doradztwie dla przedsiębiorców i osób prywatnych.</p>
-      <p>Wieloletnie doświadczenie w obsłudze podmiotów gospodarczych oraz klientów indywidualnych.</p>
+      <h1>dr Klaudia Kaniecka</h1>
+      <div class="tag">KANCELARIA ADWOKACKA</div>
+      <p class="subtitle">Indywidualne podejście, dbałość o szczegóły i najwyższe standardy obsługi – tak pracuję dla moich Klientów.</p>
     </div>
   </section>
 
-  <section id="kontakt">
+  <section id="specjalizacje" class="practice-areas">
+    <div class="container">
+      <h2>Specjalizacje</h2>
+      <div class="areas-grid">
+
+        <div class="area-card">
+          <div class="icon">⚖️</div>
+          <h3>Prawo podatkowe</h3>
+          <p>Optymalizacja podatkowa, spory z organami podatkowymi, planowanie sukcesyjne i restrukturyzacje.</p>
+        </div>
+
+        <div class="area-card">
+          <div class="icon">🏛️</div>
+          <h3>Prawo spółek</h3>
+          <p>Zakładanie i przekształcanie spółek, umowy wspólników, obsługa organów spółek, M&A.</p>
+        </div>
+
+        <div class="area-card">
+          <div class="icon">📜</div>
+          <h3>Restrukturyzacja i upadłość</h3>
+          <p>Doradztwo w postępowaniach restrukturyzacyjnych i upadłościowych – zarówno dla dłużników, jak i wierzycieli.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="konsultacja" class="cta-section">
+    <div class="container">
+      <h2>Potrzebujesz pomocy prawnej?</h2>
+      <p>Zapraszam do kontaktu – umówimy dogodny termin konsultacji i omówimy Twoją sprawę w sposób konkretny i rzeczowy.</p>
+      <a href="mailto:klaudia.kaniecka@kancelaria.pl?subject=Zapytanie%20o%20konsultację" class="btn">Umów konsultację</a>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact">
     <div class="container">
       <h2>Kontakt</h2>
-      <div class="contact-grid">
+      <div class="contact-info">
         <div class="contact-item">
           <strong>Adres</strong>
-          Kancelaria Adwokacka dr Klaudia Kaniecka<br>
-          ul. Szekspira 4 lok. 172<br>
-          01-913 Warszawa
+          ul. Szekspira 4 lok. 172<br>01-913 Warszawa
         </div>
         <div class="contact-item">
           <strong>Telefon</strong>
@@ -255,46 +248,10 @@
     </div>
   </section>
 
-  <section id="umow-sie">
-    <div class="container">
-      <h2>Umów się na konsultację</h2>
-      <p style="font-size: 1.25rem; max-width: 680px; margin: 0 auto 2.5rem; color: #4b5563;">
-        Najlepiej zadzwonić lub napisać maila – opiszę, jak mogę pomóc i zaproponuję dogodny termin.
-      </p>
-      <div>
-        <a href="mailto:klaudia.kaniecka@kancelaria.pl?subject=Zapytanie%20o%20konsultację" class="btn-primary">Napisz do mnie</a>
-        <a href="tel:+48123456789" class="btn-primary btn-secondary">Zadzwoń bezpośrednio</a>
-      </div>
-    </div>
-  </section>
-
   <footer>
     © 2026 dr Klaudia Kaniecka – Kancelaria Adwokacka<br>
-    <a href="mailto:klaudia.kaniecka@kancelaria.pl">klaudia.kaniecka@kancelaria.pl</a> • NIP: [wpisz NIP]
+    NIP: [wpisz NIP] • Wszystkie prawa zastrzeżone
   </footer>
-
-  <script>
-    // Subtelne podświetlenie nawigacji + efekt scrolled
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-
-      // Opcjonalnie: podświetl aktywną sekcję (można usunąć jeśli niepotrzebne)
-      document.querySelectorAll('section').forEach(sec => {
-        const top = sec.offsetTop - 120;
-        const height = sec.offsetHeight;
-        if (pageYOffset >= top && pageYOffset < top + height) {
-          const id = sec.getAttribute('id');
-          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-          document.querySelector(`nav a[href="#${id}"]`)?.classList.add('active');
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
