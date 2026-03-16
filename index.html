@@ -229,6 +229,37 @@
             header { height: 85vh; }
             .container { padding: 0 25px; }
         }
+
+        /* Układ Logo + Napis w sekcji Hero */
+            .hero-brand {
+                display: flex;
+                align-items: center; /* Wyrównanie w pionie */
+                gap: 20px;           /* Odstęp między logo a tekstem */
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-logo {
+                height: 80px;        /* Wielkość logo obok napisu - możesz regulować */
+                width: auto;
+            }
+            
+            .hero-content h1 {
+                font-size: clamp(2.5rem, 6vw, 4.5rem); /* Nieco mniejszy font, by zmieścić logo */
+                margin-bottom: 0; 
+                line-height: 1.1;
+            }
+            
+            /* Korekta dla telefonów */
+            @media (max-width: 768px) {
+                .hero-brand {
+                    flex-direction: column; /* Na komórkach logo nad napisem */
+                    align-items: flex-start;
+                    gap: 15px;
+                }
+                .hero-logo {
+                height: 60px;
+                }
+            }
     </style>
 </head>
 <body>
@@ -242,14 +273,18 @@
     </nav>
 
     <header>
-        <div class="container">
-            <div class="hero-content reveal">
-                <span class="hero-subtitle">Adwokat | Doktor Nauk Prawnych</span>
-                <h1>dr Klaudia Kaniecka</h1>
-                <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
+    <div class="container">
+        <div class="hero-content reveal">
+            <span class="hero-subtitle">Adwokat | Doktor Nauk Prawnych</span>
+            
+            <div class="hero-brand">
+                <img src="Klaudia_Kaniecka_logo_czarne.svg" alt="" class="hero-logo"> <h1>dr Klaudia Kaniecka</h1>
             </div>
+
+            <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
         </div>
-    </header>
+    </div>
+</header>
 
     <section class="about" id="about">
         <div class="container">
