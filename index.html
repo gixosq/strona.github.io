@@ -230,34 +230,31 @@
             .container { padding: 0 25px; }
         }
 
-        /* Układ Logo + Napis w sekcji Hero */
-            .hero-brand {
-                display: flex;
-                align-items: center; /* Wyrównanie w pionie */
-                gap: 20px;           /* Odstęp między logo a tekstem */
-                margin-bottom: 0.5rem;
+            /* Styl dla logo zastępującego nagłówek h1 */
+            .hero-logo-main {
+                display: block;
+                max-width: 100%;      /* Logo nie wyjdzie poza ekran */
+                height: auto;
+                max-height: 120px;    /* Dopasuj tę wartość, by logo było czytelne, ale nie przytłaczające */
+                margin-bottom: 2rem;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); /* Delikatna głębia */
+            }
+
+            /* Ukrywamy tekst h1 tylko wizualnie (dla Google), ale zostawiamy go w kodzie */
+            .visually-hidden {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                border: 0;
             }
             
-            .hero-logo {
-                height: 160px;        /* Wielkość logo obok napisu - możesz regulować */
-                width: auto;
-            }
-            
-            .hero-content h1 {
-                font-size: clamp(2.5rem, 6vw, 4.5rem); /* Nieco mniejszy font, by zmieścić logo */
-                margin-bottom: 0; 
-                line-height: 1.1;
-            }
-            
-            /* Korekta dla telefonów */
             @media (max-width: 768px) {
-                .hero-brand {
-                    flex-direction: column; /* Na komórkach logo nad napisem */
-                    align-items: flex-start;
-                    gap: 15px;
-                }
-                .hero-logo {
-                height: 60px;
+                .hero-logo-main {
+                    max-height: 80px; /* Nieco mniejsze logo na telefonach */
                 }
             }
     </style>
@@ -273,18 +270,18 @@
     </nav>
 
     <header>
-    <div class="container">
-        <div class="hero-content reveal">
-            <span class="hero-subtitle">Adwokat | Doktor Nauk Prawnych</span>
-            
-            <div class="hero-brand">
-                <img src="Klaudia_Kaniecka_logo_czarne.svg" alt="" class="hero-logo"> <h1>dr Klaudia Kaniecka</h1>
+        <div class="container">
+            <div class="hero-content reveal">
+                <span class="hero-subtitle">Adwokat | Doktor Nauk Prawnych</span>
+                
+                <img src="logo.svg" alt="dr Klaudia Kaniecka" class="hero-logo-main">
+                
+                <h1 class="visually-hidden">dr Klaudia Kaniecka | Doradztwo Prawno-Podatkowe</h1>
+    
+                <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
             </div>
-
-            <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
         </div>
-    </div>
-</header>
+    </header>
 
     <section class="about" id="about">
         <div class="container">
