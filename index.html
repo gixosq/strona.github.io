@@ -230,44 +230,43 @@
             .container { padding: 0 25px; }
         }
 
-            .hero-logo-main {
-                display: block;
-                height: auto;
-                /* Zwiększamy fizyczną wysokość, by zniwelować marginesy w pliku */
-                max-height: 180px; 
-                
-                /* Przesuwamy i powiększamy samo logo wewnątrz ramki */
-                transform: scale(1.3); 
-                transform-origin: left center; /* Powiększanie od lewej strony */
-                
-                margin-bottom: 3rem;
-                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
-            }
-            
-            @media (max-width: 768px) {
-                .hero-logo-main {
-                    max-height: 110px;
-                    transform: scale(1.2);
-                }
-            }
+           /* Nowy, czysty układ pionowy w Hero */
+.hero-content {
+    display: flex;
+    flex-direction: column; /* Układa elementy w pionie */
+    align-items: flex-start; /* Wyrównuje wszystko do lewej */
+}
 
-            /* Ukrywamy tekst h1 tylko wizualnie (dla Google), ale zostawiamy go w kodzie */
-            .visually-hidden {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                border: 0;
-            }
-            
-            @media (max-width: 768px) {
-                .hero-logo-main {
-                    max-height: 80px; /* Nieco mniejsze logo na telefonach */
-                }
-            }
+.hero-logo-main {
+    display: block;
+    height: auto;
+    max-height: 400px;      /* Możesz zwiększyć, jeśli logo ma marginesy */
+    margin-bottom: 2.5rem;  /* Odstęp między logo a tekstem pod spodem */
+    /* Jeśli logo ma duże puste marginesy po bokach w pliku, 
+       możesz dodać poniższą linię, by "dosunąć" tekst: */
+    margin-left: -10px;     
+}
+
+.hero-vp {
+    font-size: clamp(1.2rem, 3vw, 1.6rem); /* Responsywna wielkość czcionki */
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    max-width: 550px;       /* Ogranicza szerokość, by tekst ładnie się łamał */
+    border-left: 1px solid var(--gold);
+    padding-left: 2rem;
+    line-height: 1.4;
+}
+
+/* Korekta dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    .hero-logo-main {
+        max-height: 100px;
+        margin-bottom: 1.5rem;
+    }
+    .hero-vp {
+        padding-left: 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -280,19 +279,18 @@
         </div>
     </nav>
 
-    <header>
-        <div class="container">
-            <div class="hero-content reveal">
-                <span class="hero-subtitle">Adwokat | Doktor Nauk Prawnych</span>
-                
-                <img src="Klaudia_Kaniecka_logo_czarne.svg" alt="dr Klaudia Kaniecka" class="hero-logo-main">
-                
-                <h1 class="visually-hidden">dr Klaudia Kaniecka | Doradztwo Prawno-Podatkowe</h1>
-    
-                <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
-            </div>
+   <header>
+    <div class="container">
+        <div class="hero-content reveal">
+            
+            <img src="Klaudia_Kaniecka_logo_czarne.svg" alt="dr Klaudia Kaniecka" class="hero-logo-main">
+            
+            <h1 class="visually-hidden">dr Klaudia Kaniecka - Kancelaria Prawna</h1>
+
+            <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
         </div>
-    </header>
+    </div>
+</header>
 
     <section class="about" id="about">
         <div class="container">
