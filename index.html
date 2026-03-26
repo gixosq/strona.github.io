@@ -46,19 +46,29 @@
 
         /* --- LOGO NA GÓRZE --- */
         nav {
-            position: absolute; /* Logo płynie ze stroną, lub zmień na 'fixed' jeśli ma być zawsze widoczne */
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 40px 0;
-            z-index: 1000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2vh 2vw;
         }
 
+        .nav-logo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-logo object,
         .nav-logo img {
-            height: 220px; /* Dopasuj wielkość logo górnego */
-            width: auto;
+            width: 100%;
+            height: auto;
+            max-width: 96vw;
+            max-height: 96vh;
             display: block;
-            transition: var(--transition); /* Dodaje płynność przy zmianach */
+            transition: var(--transition);
         }
 
 
@@ -103,7 +113,6 @@
             color: #333;
         }
 
-        /* Sekcja O Kancelarii */
         .about { padding: 160px 0; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
         .about-title { font-size: 2.5rem; font-family: 'Playfair Display', serif; }
@@ -112,11 +121,22 @@
 
         /* Ekspertyza */
         .expertise { padding-bottom: 160px; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2px; background-color: #e5e5e5; border: 1px solid #e5e5e5; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(5, minmax(220px, 1fr)); gap: 2px; background-color: #e5e5e5; border: 1px solid #e5e5e5; overflow-x: auto; }
         .expertise-item { background-color: var(--bone); padding: 60px 40px; transition: var(--transition); }
         .expertise-item:hover { background-color: #fff; }
         .expertise-number { color: var(--gold-muted); font-size: 0.8rem; display: block; margin-bottom: 2rem; }
         .expertise-item h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; }
+        .expertise-contact {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: #444;
+        }
+        .expertise-contact a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         /* Footer */
         footer { padding: 100px 0 60px; text-align: center; border-top: 1px solid #eee; }
@@ -126,41 +146,25 @@
         @media (max-width: 768px) {
             .about-grid { grid-template-columns: 1fr; }
             header { height: 90vh; }
-            .nav-logo img { height: 100px; }
+            .nav-logo object,
+            .nav-logo img {
+                max-width: 94vw;
+                max-height: 94vh;
+            }
+            .expertise-contact {
+                font-size: 0.9rem;
+                line-height: 1.8;
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="container">
-            <a href="/" class="nav-logo">
-                <img src="Klaudia_Kaniecka_logo_czarne.svg" alt="dr Klaudia Kaniecka Logo">
-            </a>
-        </div>
+        <a href="/" class="nav-logo">
+            <img src="Klaudia_Kaniecka_logo_czarne.svg" alt="Logo kancelarii">
+        </a>
     </nav>
-
-    <header>
-        <div class="container">
-            <div class="hero-content reveal">
-                <span class="hero-subtitle">Adwokat | Doktor Nauk Prawnych</span>
-                <h1>dr Klaudia Kaniecka</h1>
-                <p class="hero-vp">Specjalistyczne doradztwo prawno-podatkowe dla biznesu i sukcesji.</p>
-            </div>
-        </div>
-    </header>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <h2 class="about-title reveal">O Kancelarii</h2>
-                <div class="about-text reveal">
-                    <p>Wspieram przedsiębiorców w bezpiecznym i efektywnym prowadzeniu biznesu. Moja praktyka łączy rygorystyczne podejście naukowe z wieloletnim doświadczeniem w doradztwie transakcyjnym i korporacyjnym.</p>
-                    <p>Jako doktor nauk prawnych, kładę szczególny nacisk na precyzję interpretacyjną, co jest kluczowe w dynamicznie zmieniającym się otoczeniu regulacyjnym.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="expertise">
         <div class="container">
@@ -185,18 +189,24 @@
                     <h3>Procesy sukcesyjne</h3>
                     <p>Planowanie przekazania majątku i zarządzania firmą rodzinną.</p>
                 </div>
+                <div class="expertise-item reveal">
+                    <span class="expertise-number">05</span>
+                    <h3>Prawo podatkowe</h3>
+                    <p>Doradztwo prawne w zakresie prawa podatkowego dla spółek oraz osób fizycznych.</p>
+                </div>
+            </div>
+            <div class="expertise-contact reveal">
+                <p>Aleje Ujazdowskie 26 lok. 40</p>
+                <p>01-478 Warszawa</p>
+                <p>telefon: <a href="tel:+48530551752">+48 530 551 752</a></p>
+                <p>email: <a href="mailto:sekretariat@kanieckaadw.com">sekretariat@kanieckaadw.com</a></p>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="reveal">
-                <a href="mailto:kancelaria@kanieckaadw.com" class="contact-link">kancelaria@kanieckaadw.com</a>
-                <div class="social-links">
-                </div>
-            </div>
-            <p style="margin-top: 60px; font-size: 0.7rem; color: #bbb;">&copy; 2026 dr adw. Klaudia Kaniecka.</p>
+<p style="margin-top: 60px; font-size: 0.7rem; color: #bbb;">&copy; 2026 dr adw. Klaudia Kaniecka.</p>
         </div>
     </footer>
 
@@ -211,3 +221,11 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
